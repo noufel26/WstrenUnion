@@ -1,0 +1,33 @@
+body {
+  background-color: yellow;
+}
+body {
+  background: linear-gradient(to bottom, #ffdd00, #ffcc00);
+}
+body {
+  background-color: yellow;
+  background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+}
+
+body {
+  background: linear-gradient(to bottom, #ffdd00, #ffcc00);
+}
+.header {
+  position: absolute;
+  top: 10px;  /* المسافة من الأعلى */
+  left: 10px; /* المسافة من اليسار */
+  font-size: 24px; /* حجم الخط */
+  font-weight: bold; /* جعل الخط عريض */
+  color: black; /* لون النص */
+}
+.header {
+  position: absolute;
+  top: 10px;   /* المسافة من الأعلى */
+  left: 10px;  /* المسافة من اليسار */
+  font-size: 24px;  /* حجم الخط */
+  font-weight: bold;  /* جعل الخط عريض */
+  color: black;  /* لون النص */
+  background-color: yellow;  /* خلفية صفراء مثل تصميم Western Union */
+  padding: 10px 20px;  /* مسافة داخلية حول النص */
+  border-radius: 5px;  /* حواف مستديرة قليلاً */
+}
